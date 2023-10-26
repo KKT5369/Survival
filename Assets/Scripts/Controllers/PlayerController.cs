@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,4 +40,8 @@ public class PlayerController : MonoBehaviour
         srAvatar.flipX = _pos.x < 0;
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        
+    }
 }

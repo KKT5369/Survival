@@ -7,11 +7,11 @@ using UnityEngine.AddressableAssets;
 
 public class GameScene : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera camera;
+    [SerializeField] private CinemachineVirtualCamera mainCamera;
     
     private void Start()
     {
-        GameManager.Instance.camera = camera;
+        GameManager.Instance.mainCamera = mainCamera;
         GameManager.Instance.SetUp();
     }
     

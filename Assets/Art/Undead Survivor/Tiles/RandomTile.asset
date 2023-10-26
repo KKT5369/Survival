@@ -18,7 +18,7 @@ MonoBehaviour:
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: 2093186594, guid: 9ee30eb7d2f1f404790266ee96a67099, type: 3}
+    - {fileID: -2031541144, guid: 9ee30eb7d2f1f404790266ee96a67099, type: 3}
     - {fileID: 2093186594, guid: 9ee30eb7d2f1f404790266ee96a67099, type: 3}
     - {fileID: -2031541144, guid: 9ee30eb7d2f1f404790266ee96a67099, type: 3}
     - {fileID: -2031541144, guid: 9ee30eb7d2f1f404790266ee96a67099, type: 3}
