@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInfo _playerInfo;
     [SerializeField] private Animator anim;
     [SerializeField] private SpriteRenderer srAvatar;
-    private Vector3 _pos;
+    public Vector3 inputVec;
     
     private void Start()
     {
@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        transform.position += _pos * 5f * Time.deltaTime;
-        anim.SetFloat("Speed", _pos.magnitude);
+        transform.position += inputVec * 5f * Time.deltaTime;
+        anim.SetFloat("Speed", inputVec.magnitude);
     }
 
     async void SetAnim()
@@ -33,15 +33,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext value)
     {
-        _pos = value.ReadValue<Vector3>();
+        inputVec = value.ReadValue<Vector3>();
 
-        if(_pos.magnitude == 0) return;
+        if(inputVec.magnitude == 0) return;
         
-        srAvatar.flipX = _pos.x < 0;
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        
+        srAvatar.flipX = inputVec.x < 0;
     }
 }
