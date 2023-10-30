@@ -5,7 +5,6 @@ public class RePosition : MonoBehaviour
 {
     private void OnTriggerExit2D(Collider2D other)
     {
-        print("트리거 체크");
         if (!other.CompareTag("Area"))
             return;
         var playerController = GameManager.Instance.playerController;
@@ -21,7 +20,6 @@ public class RePosition : MonoBehaviour
         switch (transform.tag)
         {
             case "Ground":
-                print("체크");
                 if (diffX > diffY)
                 {
                     transform.Translate(Vector3.right * dirX * 40);

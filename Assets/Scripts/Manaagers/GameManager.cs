@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -24,6 +25,11 @@ public class GameManager : SingleTon<GameManager>
             playerController = avatarGo.GetComponent<PlayerController>();
             mainCamera.LookAt = avatarGo.transform;
             mainCamera.Follow = avatarGo.transform;
+        });
+
+        await ResourceLoadManager.Instance.LoadAssetasync<GameObject>("Enemy", (result) =>
+        {
+            Instantiate(result, new Vector3(3, 3, 0),quaternion.identity);
         });
     }
 }
