@@ -26,10 +26,8 @@ public class GameManager : SingleTon<GameManager>
             mainCamera.LookAt = avatarGo.transform;
             mainCamera.Follow = avatarGo.transform;
         });
-
-        await ResourceLoadManager.Instance.LoadAssetasync<GameObject>("Enemy", (result) =>
-        {
-            Instantiate(result, new Vector3(3, 3, 0),quaternion.identity);
-        });
+        
+        PoolManager.Instance.Init();
+        PoolManager.Instance.MonsterSpawn();
     }
 }

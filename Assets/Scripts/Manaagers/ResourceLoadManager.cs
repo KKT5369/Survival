@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -30,6 +31,22 @@ public class ResourceLoadManager : SingleTon<ResourceLoadManager>
 
         await UniTask.WaitUntil(() => asset.IsDone);
         action?.Invoke((T)asset.Result);
+    }
+    
+    // Label 에 해당하는 어드레스 이름을 List 로 반환
+    public async UniTask<List<string>> GetLabelToAddressName(string strLabel)
+    {
+        var handle = Addressables.LoadResourceLocationsAsync(strLabel, typeof(object));
+
+        await UniTask.WaitUntil(() => handle.IsDone);
+        var sd = handle.Result;
+        List<string> addressNames = new();
+        foreach (var v in sd)
+        {
+            addressNames.Add(v.PrimaryKey); 
+        }
+
+        return addressNames;
     }
 
     public async UniTask DownloadDependenciesAsync(string strLabel)
