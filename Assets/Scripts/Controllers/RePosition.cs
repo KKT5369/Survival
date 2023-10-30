@@ -1,8 +1,16 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RePosition : MonoBehaviour
 {
+    private Collider2D _col;
+
+    private void Awake()
+    {
+        _col = GetComponent<Collider2D>();
+    }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (!other.CompareTag("Area"))
@@ -30,7 +38,10 @@ public class RePosition : MonoBehaviour
                 }
                 break;
             case "Enemy":
-                
+                if (_col.enabled)
+                {
+                    transform.Translate(playerDir * 40 + new Vector3(Random.Range(-3f,3f),Random.Range(-3f,3f),0));
+                }
                 break;
             
         }
