@@ -13,7 +13,7 @@ public class PoolManager : SingleTon<PoolManager>
     private GameObject _enemyPrefab;
     private GameObject _monsterContents;
     private Dictionary<string, List<GameObject>> _pools;
-    private List<string> _acMonster = new();
+    public List<string> _acMonster = new();
     private List<AnimatorOverrideController> _animControllers = new();
     
     List<GameObject> enemyList;
@@ -42,14 +42,10 @@ public class PoolManager : SingleTon<PoolManager>
         }
     }
     
-    public void MonsterSpawn(Vector3 spawnPos)
+    public void MonsterSpawn(SpawnData spawnData,Vector3 spawnPos)
     {
-        var level = Mathf.FloorToInt(GameManager.Instance.gameTime / 10f);
-        if (level >= _acMonster.Count)
-        {
-            level = Random.Range(0, _acMonster.Count);
-        }
-        
+        var level = spawnData.spriteType;
+
         var enemyName = _acMonster[level];
 
         if (_pools.TryGetValue(_acMonster[level], out enemyList))
@@ -68,6 +64,7 @@ public class PoolManager : SingleTon<PoolManager>
             
             enemyAnim.runtimeAnimatorController = _animControllers[level];
             enemyGo.name = enemyName;
+            enemyGo.GetComponent<EnemyController>().SpawnData = spawnData;
             enemyList.Add(enemyGo);
         }
     }

@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private float _speed = 2;
+    public SpawnData SpawnData { private get; set; }
     private Rigidbody2D _target;
+    private float _speed;
 
-    private bool _isLive;
+    private bool _isLive; 
     
     [SerializeField] private Rigidbody2D rigid;
     [SerializeField] private SpriteRenderer spriter;
@@ -16,6 +17,8 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         _target = GameManager.Instance.playerController.GetComponent<Rigidbody2D>();
+        _speed = SpawnData.speed;
+        print($"{gameObject.name} HP { SpawnData.health } 생성!!");
     }
 
     private void FixedUpdate()

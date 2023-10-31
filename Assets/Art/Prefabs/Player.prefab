@@ -391,7 +391,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38b724876f540e43970903cacbe1440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: []
+  spawnData:
+  - spriteType: 0
+    spawnTime: 0.2
+    health: 20
+    speed: 2
+  - spriteType: 1
+    spawnTime: 0.4
+    health: 30
+    speed: 2.5
+  - spriteType: 2
+    spawnTime: 0.6
+    health: 40
+    speed: 3
+  - spriteType: 3
+    spawnTime: 0
+    health: 50
+    speed: 3.5
 --- !u!1 &4408258081609949640
 GameObject:
   m_ObjectHideFlags: 0
