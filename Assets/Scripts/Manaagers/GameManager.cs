@@ -11,6 +11,9 @@ public class GameManager : SingleTon<GameManager>
     public PlayerController playerController;
     public AssetReference MapReference { private get; set; }
 
+    public float gameTime;
+    public float maxGameTime = 2 * 60;
+
     public async void Init()
     {
         var mapRef = Instance.MapReference;
@@ -27,5 +30,15 @@ public class GameManager : SingleTon<GameManager>
             mainCamera.LookAt = avatarGo.transform;
             mainCamera.Follow = avatarGo.transform;
         });
+    }
+    
+    private void Update()
+    {
+        gameTime += Time.deltaTime;
+
+        if (gameTime > 0.2f)
+        {
+            gameTime += 0;
+        }
     }
 }

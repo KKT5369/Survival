@@ -15,7 +15,9 @@ public class PoolManager : SingleTon<PoolManager>
     private Dictionary<string, List<GameObject>> _pools;
     private List<string> _acMonster = new();
     private List<AnimatorOverrideController> _animControllers = new();
+    
     List<GameObject> enemyList;
+    
     void Awake()
     {
         _monsterContents = new GameObject("MONSTERCONTENTS");
@@ -42,11 +44,15 @@ public class PoolManager : SingleTon<PoolManager>
     
     public void MonsterSpawn(Vector3 spawnPos)
     {
-        int randomIndex = Random.Range(0, _acMonster.Count);
-        print(randomIndex);
-        var enemyName = _acMonster[randomIndex];
+        var level = Mathf.FloorToInt(GameManager.Instance.gameTime / 10f);
+        if (level >= _acMonster.Count)
+        {
+            level = Random.Range(0, _acMonster.Count);
+        }
         
-        if (_pools.TryGetValue(_acMonster[randomIndex], out enemyList))
+        var enemyName = _acMonster[level];
+
+        if (_pools.TryGetValue(_acMonster[level], out enemyList))
         {
             foreach (var v in enemyList)
             {
@@ -60,7 +66,7 @@ public class PoolManager : SingleTon<PoolManager>
             var enemyGo = Instantiate(_enemyPrefab, spawnPos,quaternion.identity,_monsterContents.transform);
             var enemyAnim = enemyGo.GetComponent<Animator>();
             
-            enemyAnim.runtimeAnimatorController = _animControllers[randomIndex];
+            enemyAnim.runtimeAnimatorController = _animControllers[level];
             enemyGo.name = enemyName;
             enemyList.Add(enemyGo);
         }
