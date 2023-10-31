@@ -8,7 +8,9 @@ public class EnemyController : MonoBehaviour
     public SpawnData SpawnData { private get; set; }
     private Rigidbody2D _target;
     private float _speed;
-
+    private int _health;
+    
+    
     private bool _isLive; 
     
     [SerializeField] private Rigidbody2D rigid;
@@ -17,8 +19,6 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         _target = GameManager.Instance.playerController.GetComponent<Rigidbody2D>();
-        _speed = SpawnData.speed;
-        print($"{gameObject.name} HP { SpawnData.health } 생성!!");
     }
 
     private void FixedUpdate()
@@ -40,5 +40,33 @@ public class EnemyController : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Bullet"))
+            return;
+
+        if (_health > 0 )
+        {
+            _health -= other.GetComponent<Bullet>().damage;
+        }
+        else
+        {
+            Dead();
+        }
+    }
+
+    private void Dead()
+    {
+        _isLive = false;
+        gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        _isLive = true;
+        _speed = SpawnData.speed;
+        _health = SpawnData.health;
     }
 }
