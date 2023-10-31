@@ -38,23 +38,10 @@ public class PoolManager : SingleTon<PoolManager>
                 _animControllers.Add(result);
             });
         }
-
-        MonsterSpawn();
-
-        for (int i = 0; i < 5; i++)
-        {
-            Invoke(nameof(MonsterSpawn), 3f);
-            Invoke(nameof(MonsterSpawn), 6f);
-        }
     }
     
-    public void MonsterSpawn()
+    public void MonsterSpawn(Vector3 spawnPos)
     {
-        int posX = Random.Range(5, 10);
-        int posY = Random.Range(5, 10);
-
-        Vector3 enemyRandomPos = new Vector3(posX, posY);
-        
         int randomIndex = Random.Range(0, _acMonster.Count);
         print(randomIndex);
         var enemyName = _acMonster[randomIndex];
@@ -65,12 +52,12 @@ public class PoolManager : SingleTon<PoolManager>
             {
                 if (!v.activeSelf)
                 {
-                    v.transform.position = enemyRandomPos;
+                    v.transform.position = spawnPos;
                     v.SetActive(true);
                     return;
                 }
             }
-            var enemyGo = Instantiate(_enemyPrefab, enemyRandomPos,quaternion.identity,_monsterContents.transform);
+            var enemyGo = Instantiate(_enemyPrefab, spawnPos,quaternion.identity,_monsterContents.transform);
             var enemyAnim = enemyGo.GetComponent<Animator>();
             
             enemyAnim.runtimeAnimatorController = _animControllers[randomIndex];

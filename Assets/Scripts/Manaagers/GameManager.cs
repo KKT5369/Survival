@@ -11,7 +11,7 @@ public class GameManager : SingleTon<GameManager>
     public PlayerController playerController;
     public AssetReference MapReference { private get; set; }
 
-    public async void SetUp()
+    public async void Init()
     {
         var mapRef = Instance.MapReference;
         await ResourceLoadManager.Instance.LoadAssetasync<GameObject>(mapRef, (result) =>
@@ -27,16 +27,5 @@ public class GameManager : SingleTon<GameManager>
             mainCamera.LookAt = avatarGo.transform;
             mainCamera.Follow = avatarGo.transform;
         });
-        
-        PoolManager.Instance.Init();
-
-    }
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            PoolManager.Instance.MonsterSpawn();
-        }
     }
 }
