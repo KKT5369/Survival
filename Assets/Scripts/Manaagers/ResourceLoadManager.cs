@@ -43,7 +43,7 @@ public class ResourceLoadManager : SingleTon<ResourceLoadManager>
         List<string> addressNames = new();
         foreach (var v in sd)
         {
-            addressNames.Add(v.PrimaryKey); 
+            addressNames.Add(v.PrimaryKey);
         }
 
         return addressNames;

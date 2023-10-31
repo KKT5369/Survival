@@ -45,6 +45,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb70e1e885dcd8645816f9d4e28f87d4, type: 2}
   - {fileID: 11400000, guid: ffa8fdbab20d22045838b9bb9f5061ac, type: 2}
   - {fileID: 11400000, guid: 13b56be64961af34db583de499d623bc, type: 2}
+  - {fileID: 11400000, guid: 0a77e68e15f264f43a29f5b9cdeaf69a, type: 2}
+  - {fileID: 11400000, guid: 76283daab9b7d72449e15c6168083e87, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -88,6 +90,7 @@ MonoBehaviour:
     - default
     - Ac
     - Font
+    - Stage1Monster
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: ee8e1883e85f4b748b03038484ccdfa6, type: 2}

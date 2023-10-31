@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Cinemachine;
 using Unity.Mathematics;
@@ -28,6 +29,14 @@ public class GameManager : SingleTon<GameManager>
         });
         
         PoolManager.Instance.Init();
-        PoolManager.Instance.MonsterSpawn();
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            PoolManager.Instance.MonsterSpawn();
+        }
     }
 }

@@ -30,4 +30,12 @@ public class EnemyController : MonoBehaviour
     {
         spriter.flipX = _target.position.x < rigid.position.x;
     }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }

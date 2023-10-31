@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Stage1
+  m_EditorClassIdentifier: 
+  m_GroupName: Stage1
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c5f22409aa72a3947935d08568cd1bc0
+  m_SerializeEntries:
+  - m_GUID: a14f51c1faddfc14aad620fadb5d734f
+    m_Address: Ground
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12cfc8b2360c2fc4499d4f6f6607671a
+    m_Address: AcEnemy2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1Monster
+  - m_GUID: 050556270436d4f4288557291a1a99c0
+    m_Address: AcEnemy1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1Monster
+  - m_GUID: 25f7a818644b68042bb0c0c2a28d1550
+    m_Address: AcEnemy4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1Monster
+  - m_GUID: 8d1d920724ffb8a409ce0e458dc4b7a9
+    m_Address: AcEnemy3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Stage1Monster
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 257387bfb2779c04d81586dcb7b55e0d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 15944bb10c0bb074f889a2753876e1a5, type: 2}
+    - {fileID: 11400000, guid: 349d16f7052015b408a6e7c2f5d9b622, type: 2}
