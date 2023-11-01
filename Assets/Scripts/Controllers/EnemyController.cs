@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
         
         if (_health > 0 )
         {
-            _health -= col.GetComponentInParent<Bullet>().Damage;
+            //_health -= col.GetComponentInParent<Shovel>().Damage;
         }
         else
         {

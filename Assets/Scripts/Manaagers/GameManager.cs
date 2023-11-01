@@ -1,5 +1,6 @@
 using System;
 using Cinemachine;
+using Cysharp.Threading.Tasks;
 using Data;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -45,7 +46,9 @@ public class GameManager : SingleTon<GameManager>
     // ++ Test Code ++ // 
     public void TestCode()
     {
-        playerController.SetWeapon<Bullet>();
+        playerController.SetWeapon<Shovel>(WeaponType.Shovel);
+        playerController.SetWeapon<Bullet>(WeaponType.GunBullet);
+        
     }
     
 }

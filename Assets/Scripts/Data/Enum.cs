@@ -8,7 +8,9 @@
 
     public enum WeaponType
     {
-        Bullet,
+        Shovel,
+        GunBullet,
+        MagicBullet,
     }
     
 }

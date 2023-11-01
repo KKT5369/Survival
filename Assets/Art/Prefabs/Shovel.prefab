@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5382144701798309007}
   - component: {fileID: 8004510174554465205}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Shovel
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

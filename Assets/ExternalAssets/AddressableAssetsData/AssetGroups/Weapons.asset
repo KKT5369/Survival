@@ -18,7 +18,11 @@ MonoBehaviour:
   m_GUID: 35c4c268c9e6a0e42936cebb27d29d98
   m_SerializeEntries:
   - m_GUID: 7400a768fa00ea74e99e46f800f21b1d
-    m_Address: Bullet
+    m_Address: Shovel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 576957e6347570e47b35cd4748990d7e
+    m_Address: GunBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
