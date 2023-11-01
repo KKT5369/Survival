@@ -1,53 +1,40 @@
 using System;
-using Data;
-using Unity.Mathematics;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : WeaponBase
 {
-    protected override void SetWeaponInfo(WeaponInfo info)
+    private Transform _targer;
+    private List<GameObject> _pool = new();
+    private float _timer;
+
+    private void FixedUpdate()
     {
-        // todo Json 파싱으로 추후 적용
-        // 레벨에 따라 능력치 적용...
+        WeaponAction();
+    }
+
+    protected override async void WeaponAction()
+    {
+        string strWeaponType = Convert.ToString(WeaponType);
+        _timer += Time.deltaTime;
         
-        Damage = info.damage;
-        Per = info.per;
-        Count = info.count;
-        Speed = info.speed;
-    }
-
-    protected async override void WeaponAction()
-    {
-        for (int i = 0; i < Count; i++)
+        if (_timer > 2f)
         {
-            Transform bullet = null;
-            
-            string weaponName = Convert.ToString(WeaponType.Bullet);
-
-            if (i < transform.childCount)
+            foreach (var go in _pool)
             {
-                bullet = transform.GetChild(i);
-            }
-            else
-            {
-                await ResourceLoadManager.Instance.LoadAssetasync<GameObject>(weaponName, (result) =>
+                if (!go.activeSelf)
                 {
-                    bullet = Instantiate(result, parent).transform;
-                });
+                    go.transform.position = transform.position;
+                    _timer = 0f;
+                    return;
+                }
             }
-
-            bullet.localPosition = Vector3.zero;
-            bullet.localRotation = quaternion.identity;
-
-            Vector3 rotVec = Vector3.forward * 360 * i / Count;
-            bullet.Rotate(rotVec);
-            bullet.Translate(bullet.up * 1.5f , Space.World);
-            
+            await ResourceLoadManager.Instance.LoadAssetasync<GameObject>(strWeaponType, (result) =>
+            {
+                var go = Instantiate(result, transform);
+                _pool.Add(go);
+                _timer = 0f;
+            });
         }
-    }
-
-    private void Update()
-    {
-        transform.Rotate(Vector3.back * Speed * Time.deltaTime);
     }
 }
