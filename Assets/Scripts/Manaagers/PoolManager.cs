@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using Data;
 using Unity.Mathematics;
 using UnityEngine;
@@ -59,14 +60,13 @@ public class PoolManager : SingleTon<PoolManager>
                     return;
                 }
             }
+            
             var enemyGo = Instantiate(_enemyPrefab, spawnPos,quaternion.identity,_monsterContents.transform);
             var enemyAnim = enemyGo.GetComponent<Animator>();
-            
             enemyAnim.runtimeAnimatorController = _animControllers[level];
             enemyGo.name = enemyName;
             enemyGo.GetComponent<EnemyController>().SpawnData = spawnData;
             enemyList.Add(enemyGo);
         }
     }
-
 }

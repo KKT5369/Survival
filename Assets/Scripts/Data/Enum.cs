@@ -6,11 +6,9 @@
         M01,
     }
 
-    public enum EnemyType
+    public enum WeaponType
     {
-        AcEnemy1,
-        AcEnemy2,
-        AcEnemy3,
-        AcEnemy4,
+        Bullet,
     }
+    
 }

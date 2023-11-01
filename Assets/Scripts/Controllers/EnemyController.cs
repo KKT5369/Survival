@@ -9,8 +9,9 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D _target;
     private float _speed;
     private int _health;
-    
-    
+    private int _maxHealth;
+
+
     private bool _isLive; 
     
     [SerializeField] private Rigidbody2D rigid;
@@ -19,6 +20,9 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         _target = GameManager.Instance.playerController.GetComponent<Rigidbody2D>();
+        _speed = SpawnData.speed;
+        _health = SpawnData.health;
+        _maxHealth = _health;
     }
 
     private void FixedUpdate()
@@ -42,14 +46,14 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (!other.CompareTag("Bullet"))
+        if (!col.CompareTag("Weapon"))
             return;
-
+        
         if (_health > 0 )
         {
-            _health -= other.GetComponent<Bullet>().damage;
+            _health -= col.GetComponentInParent<Bullet>().Damage;
         }
         else
         {
@@ -66,7 +70,6 @@ public class EnemyController : MonoBehaviour
     private void OnEnable()
     {
         _isLive = true;
-        _speed = SpawnData.speed;
-        _health = SpawnData.health;
+        _health = _maxHealth;
     }
 }

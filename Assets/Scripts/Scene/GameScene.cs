@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -12,8 +13,8 @@ public class GameScene : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.mainCamera = mainCamera;
-        GameManager.Instance.Init();
         PoolManager.Instance.Init();
+        GameManager.Instance.Init();
     }
     
     

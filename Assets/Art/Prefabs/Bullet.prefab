@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 4891059112866164082}
   - component: {fileID: 5382144701798309007}
   - component: {fileID: 8004510174554465205}
-  - component: {fileID: 5792561820096916207}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1737672109, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -112,17 +111,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3888889, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5792561820096916207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4876707951942295184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbff865dc2def84eb12ac7d09ac63cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  per: 0

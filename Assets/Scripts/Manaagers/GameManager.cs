@@ -1,4 +1,6 @@
+using System;
 using Cinemachine;
+using Data;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -27,6 +29,8 @@ public class GameManager : SingleTon<GameManager>
             mainCamera.LookAt = avatarGo.transform;
             mainCamera.Follow = avatarGo.transform;
         });
+        
+        TestCode();
     }
     
     private void Update()
@@ -38,4 +42,10 @@ public class GameManager : SingleTon<GameManager>
             gameTime += 0;
         }
     }
+    // ++ Test Code ++ // 
+    public void TestCode()
+    {
+        playerController.SetWeapon<Bullet>();
+    }
+    
 }
