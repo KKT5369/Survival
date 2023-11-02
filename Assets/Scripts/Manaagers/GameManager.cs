@@ -10,10 +10,15 @@ public class GameManager : SingleTon<GameManager>
     public CinemachineVirtualCamera mainCamera;
     public PlayerController playerController;
     public AssetReference MapReference { private get; set; }
-
+    
     public float gameTime;
     public float maxGameTime = 2 * 60;
 
+    public int level;
+    public int kill;
+    public int exp;
+    public int[] nextExp = { 3, 5, 10, 100, 123, 140, 200, 250 };
+    
     public async void Init()
     {
         var mapRef = Instance.MapReference;
@@ -52,7 +57,17 @@ public class GameManager : SingleTon<GameManager>
         playerController.SetWeapon<Bullet>(info2);
         var info3 = new WeaponInfo(WeaponType.FireBullet,0, 8, 0, 1, 10f);
         playerController.SetWeapon<Bullet>(info3);
-        
+    }
+
+    public void GetExp()
+    {
+        exp++;
+
+        if (exp == nextExp[level])
+        {
+            level++;
+            
+        }
     }
     
 }
