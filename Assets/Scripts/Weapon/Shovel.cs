@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class Shovel : WeaponBase
 {
-    protected async override void WeaponAction()
+    protected override void WeaponAction()
     {
         for (int i = 0; i < Count; i++)
         {
             Transform tfWeapon = null;
-            
-            string weaponName = Convert.ToString(WeaponType);
 
             if (i < transform.childCount)
             {
@@ -19,10 +17,7 @@ public class Shovel : WeaponBase
             }
             else
             {
-                await ResourceLoadManager.Instance.LoadAssetasync<GameObject>(weaponName, (result) =>
-                {
-                    tfWeapon = Instantiate(result, transform).transform;
-                });
+                tfWeapon = Instantiate(asset, transform).transform;
             }
 
             tfWeapon.localPosition = Vector3.zero;

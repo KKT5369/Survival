@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -10,8 +8,9 @@ public class EnemyController : MonoBehaviour
     private float _speed;
     private int _health;
     private int _maxHealth;
-    private bool _isLive; 
-    
+    private bool _isLive;
+
+    [SerializeField] private CapsuleCollider2D coll;
     [SerializeField] private Rigidbody2D rigid;
     [SerializeField] private SpriteRenderer spriter;
     [SerializeField] private Animator anim;
@@ -28,6 +27,9 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!_isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+            return;
+        
         Vector2 dirVec = _target.position - rigid.position;
         Vector2 nextVec = dirVec.normalized * _speed * Time.deltaTime;
         rigid.MovePosition(rigid.position + nextVec);
@@ -64,7 +66,11 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Dead();
+            _isLive = false;
+            spriter.sortingOrder = 1;
+            coll.enabled = false;
+            rigid.simulated = false;
+            anim.SetBool("Dead",true);
         }
     }
 
@@ -78,13 +84,16 @@ public class EnemyController : MonoBehaviour
 
     private void Dead()
     {
-        _isLive = false;
         gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
         _isLive = true;
+        spriter.sortingOrder = 2;
+        coll.enabled = true;
+        rigid.simulated = true;
+        anim.SetBool("Dead",false);
         _health = _maxHealth;
     }
 }

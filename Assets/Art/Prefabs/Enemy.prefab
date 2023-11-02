@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58f8e058c930dc4597d3b1f81584ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coll: {fileID: 1236273093050446806}
   rigid: {fileID: 1236273093050446807}
   spriter: {fileID: 1236273093050446803}
   anim: {fileID: 1236273093050446805}
