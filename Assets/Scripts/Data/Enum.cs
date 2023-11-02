@@ -10,6 +10,7 @@
     {
         Shovel,
         GunBullet,
+        FireBullet,
         MagicBullet,
     }
     

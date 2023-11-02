@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: GunBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2c7218615324a0b409dd9861df503804
+    m_Address: FireBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 257387bfb2779c04d81586dcb7b55e0d, type: 2}
   m_SchemaSet:

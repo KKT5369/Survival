@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 1426591709281875267}
   - component: {fileID: 1426591709281875276}
   - component: {fileID: 7046567035823520848}
+  - component: {fileID: 8451757804395885141}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -192,6 +193,7 @@ MonoBehaviour:
   anim: {fileID: 1426591708815233496}
   srAvatar: {fileID: 1426591708815233497}
   weapon: {fileID: 1571794059273202684}
+  scanner: {fileID: 8451757804395885141}
   inputVec: {x: 0, y: 0, z: 0}
 --- !u!50 &1426591709281875267
 Rigidbody2D:
@@ -276,6 +278,22 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8451757804395885141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426591709281875279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8a9423e33ddd548a3b3e7988eade19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  nearestTarget: {fileID: 0}
 --- !u!1 &2250627494534647401
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +425,7 @@ MonoBehaviour:
     health: 40
     speed: 3
   - spriteType: 3
-    spawnTime: 0
+    spawnTime: 3
     health: 50
     speed: 3.5
 --- !u!1 &4408258081609949640

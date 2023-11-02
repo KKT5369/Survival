@@ -10,8 +10,6 @@ public class EnemyController : MonoBehaviour
     private float _speed;
     private int _health;
     private int _maxHealth;
-
-
     private bool _isLive; 
     
     [SerializeField] private Rigidbody2D rigid;
@@ -53,7 +51,7 @@ public class EnemyController : MonoBehaviour
         
         if (_health > 0 )
         {
-            //_health -= col.GetComponentInParent<Shovel>().Damage;
+            _health -= col.GetComponentInParent<WeaponBase>().Damage;
         }
         else
         {

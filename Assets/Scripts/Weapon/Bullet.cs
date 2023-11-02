@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Data;
 using UnityEngine;
 
 public class Bullet : WeaponBase
 {
-    private Transform _targer;
+    public Transform  target;
     private List<GameObject> _pool = new();
     private float _timer;
-
     private void FixedUpdate()
     {
         WeaponAction();
@@ -15,26 +15,54 @@ public class Bullet : WeaponBase
 
     protected override async void WeaponAction()
     {
-        string strWeaponType = Convert.ToString(WeaponType);
+        target = GameManager.Instance.playerController.scanner.nearestTarget;
+        if (!target)
+            return;
         _timer += Time.deltaTime;
+        Transform playerTf = GameManager.Instance.playerController.transform;
+        Vector3 playerPos = playerTf.position + playerTf.up * 1.5f;
+        Quaternion playerRot = playerTf.rotation;
         
-        if (_timer > 2f)
+        string strWeaponType = Convert.ToString(WeaponType);
+        if (_timer > Count)
         {
             foreach (var go in _pool)
             {
                 if (!go.activeSelf)
                 {
-                    go.transform.position = transform.position;
+                    go.transform.position = playerPos;
+                    go.transform.rotation = playerRot;
+                    go.SetActive(true);
+                    var item = BulletItemComponent(go,WeaponType);
+                    item.Fire(target.position);
                     _timer = 0f;
                     return;
                 }
             }
             await ResourceLoadManager.Instance.LoadAssetasync<GameObject>(strWeaponType, (result) =>
             {
-                var go = Instantiate(result, transform);
-                _pool.Add(go);
+                var go = Instantiate(result, playerPos, playerRot, transform);
+                var item = BulletItemComponent(go,WeaponType);
+                item.Bullet = this;
+                item.Fire(target.position);
                 _timer = 0f;
+                _pool.Add(go);
             });
         }
     }
+
+    BulletItemBase BulletItemComponent(GameObject go,WeaponType weaponType)
+    {
+        switch (weaponType)
+        {
+            case WeaponType.GunBullet: 
+                return go.GetComponent<GunBullet>();
+                break;
+            case WeaponType.FireBullet:
+                return go.GetComponent<FireBullet>();
+            default:
+                return null;
+        }
+    }
+    
 }
