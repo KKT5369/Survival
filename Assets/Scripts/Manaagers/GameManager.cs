@@ -46,11 +46,11 @@ public class GameManager : SingleTon<GameManager>
     // ++ Test Code ++ // 
     public void TestCode()
     {
-        var info = new WeaponInfo(WeaponType.Shovel,0, 50, -1, 5, 300f);
-        //playerController.SetWeapon<Shovel>(info);
-        var info2 = new WeaponInfo(WeaponType.GunBullet,0, 15, 3, 1, 15f);
+        var info = new WeaponInfo(WeaponType.Shovel,0, 50, -1, 5, 150f);
+        playerController.SetWeapon<Shovel>(info);
+        var info2 = new WeaponInfo(WeaponType.GunBullet,0, 5, 3, 1, 15f);
         playerController.SetWeapon<Bullet>(info2);
-        var info3 = new WeaponInfo(WeaponType.FireBullet,0, 15, 0, 1, 10f);
+        var info3 = new WeaponInfo(WeaponType.FireBullet,0, 8, 0, 1, 10f);
         playerController.SetWeapon<Bullet>(info3);
         
     }

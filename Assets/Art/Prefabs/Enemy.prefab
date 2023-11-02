@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigid: {fileID: 1236273093050446807}
   spriter: {fileID: 1236273093050446803}
+  anim: {fileID: 1236273093050446805}
 --- !u!114 &-4954171426299524779
 MonoBehaviour:
   m_ObjectHideFlags: 0

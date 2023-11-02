@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
     
     [SerializeField] private Rigidbody2D rigid;
     [SerializeField] private SpriteRenderer spriter;
+    [SerializeField] private Animator anim;
+    private WaitForFixedUpdate _wait;
 
     private void Start()
     {
@@ -21,6 +23,7 @@ public class EnemyController : MonoBehaviour
         _speed = SpawnData.speed;
         _health = SpawnData.health;
         _maxHealth = _health;
+        _wait = new WaitForFixedUpdate();
     }
 
     private void FixedUpdate()
@@ -49,14 +52,28 @@ public class EnemyController : MonoBehaviour
         if (!col.CompareTag("Weapon"))
             return;
         
+        _health -= col.GetComponentInParent<WeaponBase>().Damage;
+        anim.SetTrigger("Hit");
+        if (_isLive)
+        {
+            StartCoroutine(nameof(KnockBack));
+        }
+        
         if (_health > 0 )
         {
-            _health -= col.GetComponentInParent<WeaponBase>().Damage;
         }
         else
         {
             Dead();
         }
+    }
+
+    IEnumerator KnockBack()
+    {
+        yield return _wait;
+        Vector3 playerPos = GameManager.Instance.playerController.transform.position;
+        Vector3 dirVec = transform.position - playerPos;
+        rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
     }
 
     private void Dead()
