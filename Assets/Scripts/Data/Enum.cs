@@ -14,4 +14,13 @@
         MagicBullet,
     }
     
+    public enum InfoType
+    {
+        Exp,
+        Level,
+        Kill,
+        Time,
+        Health,
+    }
+    
 }

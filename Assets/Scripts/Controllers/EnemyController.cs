@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -51,18 +52,15 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (!col.CompareTag("Weapon"))
+        if (!col.CompareTag("Weapon") || !_isLive)
             return;
         
         _health -= col.GetComponentInParent<WeaponBase>().Damage;
-        anim.SetTrigger("Hit");
-        if (_isLive)
-        {
-            StartCoroutine(nameof(KnockBack));
-        }
+        StartCoroutine(nameof(KnockBack));
         
         if (_health > 0 )
         {
+            anim.SetTrigger("Hit");
         }
         else
         {
@@ -71,6 +69,8 @@ public class EnemyController : MonoBehaviour
             coll.enabled = false;
             rigid.simulated = false;
             anim.SetBool("Dead",true);
+            GameManager.Instance.kill++;
+            GameManager.Instance.GetExp();
         }
     }
 

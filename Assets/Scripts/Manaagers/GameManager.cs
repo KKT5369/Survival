@@ -14,13 +14,16 @@ public class GameManager : SingleTon<GameManager>
     public float gameTime;
     public float maxGameTime = 2 * 60;
 
+    public int health;
+    public int maxHealth = 100;
     public int level;
     public int kill;
     public int exp;
-    public int[] nextExp = { 3, 5, 10, 100, 123, 140, 200, 250 };
+    public float[] nextExp = { 3, 5, 10, 100, 123, 140, 200, 250 };
     
     public async void Init()
     {
+        health = maxHealth;
         var mapRef = Instance.MapReference;
         await ResourceLoadManager.Instance.LoadAssetasync<GameObject>(mapRef, (result) =>
         {
@@ -66,7 +69,7 @@ public class GameManager : SingleTon<GameManager>
         if (exp == nextExp[level])
         {
             level++;
-            
+            exp = 0;
         }
     }
     
