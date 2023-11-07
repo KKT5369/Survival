@@ -32,7 +32,7 @@ public class ResourceLoadManager : SingleTon<ResourceLoadManager>
         await UniTask.WaitUntil(() => asset.IsDone);
         action?.Invoke((T)asset.Result);
     }
-    
+
     // Label 에 해당하는 어드레스 이름을 List 로 반환
     public async UniTask<List<string>> GetLabelToAddressName(string strLabel)
     {

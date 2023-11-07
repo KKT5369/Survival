@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Data;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Item",menuName = "Scriptble Object/ItemData")]
 public class ItemData : ScriptableObject
 {
     [Header("# Main Info")] 
-    public ItemType itemType;
+    public WeaponType weaponType;
     public int itemId;
     public string itemName;
     public string itemDesc;
@@ -15,8 +16,12 @@ public class ItemData : ScriptableObject
     [Header("# Level Data")]
     public float baseDamage;
     public int baseCount;
+    public int basePer;
+    public int baseSpeed;
     public float[] damages;
     public int[] counts;
+    public int[] pers;
+    public int[] speeds;
 
     [Header("# Weapon")] 
     public GameObject projectile;

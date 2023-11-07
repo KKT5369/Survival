@@ -10,8 +10,14 @@ public class LobbyScene : MonoBehaviour
     
     void Start()
     {
+        TestCode();
         PlayerManager.Instance.AcAvatar = acAvatarRef;
         GameManager.Instance.MapReference = mapRef;
         UIManager.Instance.OpenUI<UILobby>();
+    }
+    // *** 테스트 코드 ***
+    void TestCode()
+    {
+
     }
 }

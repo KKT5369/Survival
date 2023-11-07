@@ -7,8 +7,8 @@ public class EnemyController : MonoBehaviour
     public SpawnData SpawnData { private get; set; }
     private Rigidbody2D _target;
     private float _speed;
-    private int _health;
-    private int _maxHealth;
+    private float _health;
+    private float _maxHealth;
     private bool _isLive;
 
     [SerializeField] private CapsuleCollider2D coll;

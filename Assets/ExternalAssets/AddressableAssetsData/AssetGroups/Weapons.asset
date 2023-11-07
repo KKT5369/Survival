@@ -17,18 +17,21 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 35c4c268c9e6a0e42936cebb27d29d98
   m_SerializeEntries:
-  - m_GUID: 7400a768fa00ea74e99e46f800f21b1d
-    m_Address: Shovel
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 576957e6347570e47b35cd4748990d7e
-    m_Address: GunBullet
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2c7218615324a0b409dd9861df503804
+  - m_GUID: 23de7f9d85d4eee44b5d2c072ec0bff6
     m_Address: FireBullet
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Weapon
+  - m_GUID: cfd0e08a706c58c45984a9bb89a14f8c
+    m_Address: GunBullet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Weapon
+  - m_GUID: 959407e4c3195d941965db5cff6fde95
+    m_Address: Shovel
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Weapon
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 257387bfb2779c04d81586dcb7b55e0d, type: 2}
   m_SchemaSet:

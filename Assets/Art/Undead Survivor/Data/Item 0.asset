@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   itemId: 0
-  itemName: "\uC0BD"
+  itemName: Shovel
   itemDesc: 
   itemIcon: {fileID: -181907988, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   baseDamage: 4.5
   baseCount: 3
+  basePer: 0
+  baseSpeed: 150
   damages:
   - 0.5
   - 1
@@ -26,4 +28,6 @@ MonoBehaviour:
   - 2
   - 3
   counts: 0100000001000000010000000100000002000000
-  projectile: {fileID: 0}
+  pers: 
+  speeds: 0000000000000000960000000000000096000000
+  projectile: {fileID: 4876707951942295184, guid: 7400a768fa00ea74e99e46f800f21b1d, type: 3}

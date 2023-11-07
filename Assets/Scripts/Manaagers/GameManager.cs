@@ -1,6 +1,5 @@
-using System;
+using System.Collections.Generic;
 using Cinemachine;
-using Cysharp.Threading.Tasks;
 using Data;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -10,7 +9,8 @@ public class GameManager : SingleTon<GameManager>
     public CinemachineVirtualCamera mainCamera;
     public PlayerController playerController;
     public AssetReference MapReference { private get; set; }
-    
+    private Dictionary<string, ItemData> _itemDatas = new();
+
     public float gameTime;
     public float maxGameTime = 2 * 60;
 
@@ -39,6 +39,15 @@ public class GameManager : SingleTon<GameManager>
             mainCamera.Follow = avatarGo.transform;
         });
         
+        var names = await ResourceLoadManager.Instance.GetLabelToAddressName("Weapon");
+        foreach (var v in names)
+        {
+            await ResourceLoadManager.Instance.LoadAssetasync<ItemData>(v, (result) =>
+            {
+                _itemDatas.Add(result.itemName,result);
+            });
+        }
+        
         TestCode();
     }
     
@@ -54,12 +63,11 @@ public class GameManager : SingleTon<GameManager>
     // ++ Test Code ++ // 
     public void TestCode()
     {
-        var info = new WeaponInfo(WeaponType.Shovel,0, 50, -1, 5, 150f);
-        playerController.SetWeapon<Shovel>(info);
-        var info2 = new WeaponInfo(WeaponType.GunBullet,0, 5, 3, 1, 15f);
-        playerController.SetWeapon<Bullet>(info2);
-        var info3 = new WeaponInfo(WeaponType.FireBullet,0, 8, 0, 1, 10f);
-        playerController.SetWeapon<Bullet>(info3);
+        ItemData data;
+        if (_itemDatas.TryGetValue(WeaponType.Shovel.ToString(), out data))
+        {
+            playerController.SetWeapon<Shovel>(data);
+        }
     }
 
     public void GetExp()
