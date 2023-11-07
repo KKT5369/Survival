@@ -25,10 +25,10 @@ public abstract class WeaponBase : MonoBehaviour
     void SetWeaponInfo(ItemData data)
     {
         WeaponType = data.weaponType;
-        Damage = data.baseDamage;
-        Count = data.baseCount;
+        Damage = data.baseDamage + data.damages[GameManager.Instance.level];
+        Count = data.baseCount + data.counts[GameManager.Instance.level];
+        Speed = data.baseSpeed + data.speeds[GameManager.Instance.level];
         asset = data.projectile;
-        Speed = data.baseSpeed;
 
     }
     protected abstract void WeaponAction();

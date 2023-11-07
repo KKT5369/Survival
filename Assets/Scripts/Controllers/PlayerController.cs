@@ -54,12 +54,13 @@ public class PlayerController : MonoBehaviour
         if (_weaponList.TryGetValue(strWeaponName,out go))
         {
             go.GetComponent<T>().LevelUp(data);
+            return;
         }
         
         var weaponGo = new GameObject($"{strWeaponName}_Item");
         var script = weaponGo.AddComponent<T>();
         script.LevelUp(data);
         weaponGo.transform.parent = weapon;
-    
+        _weaponList.Add(strWeaponName,weaponGo);
     }
 }

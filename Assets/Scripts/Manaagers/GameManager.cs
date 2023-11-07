@@ -70,6 +70,17 @@ public class GameManager : SingleTon<GameManager>
         }
     }
 
+    public ItemData GetItemData(string itemName)
+    {
+        ItemData data;
+        if (_itemDatas.TryGetValue(itemName,out data))
+        {
+            return data;
+        }
+
+        return null;
+    }
+
     public void GetExp()
     {
         exp++;
@@ -78,6 +89,8 @@ public class GameManager : SingleTon<GameManager>
         {
             level++;
             exp = 0;
+            UIManager.Instance.OpenUI<UISelectItem>();
+            Time.timeScale = 0;
         }
     }
     
