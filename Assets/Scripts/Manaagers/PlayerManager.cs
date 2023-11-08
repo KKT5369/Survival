@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 
 public class PlayerManager : SingleTon<PlayerManager>
 {
-    public AssetReference AcAvatar { get; set; }
+    
     public PlayerInfo PlayerInfo;
 
 }

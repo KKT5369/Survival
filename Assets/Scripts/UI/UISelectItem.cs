@@ -17,32 +17,7 @@ public class UISelectItem : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            var selectGo = Instantiate(selectItem, selectArea);
-            selectGo.SetActive(true);
-            var data = GameManager.Instance.GetItemData(WeaponType.Shovel.ToString());
-            var script = selectGo.GetComponent<SelectItem>();
-            script.Init(data,(() =>
-            {
-                GameManager.Instance.TestCode();
-            }));
-        }
-    }
-
-    private void OnEnable()
-    {
-        if (_selectItems.Count < 0)
-            return;
-
-        var list = (WeaponType[])Enum.GetValues(typeof(WeaponType));
-
-        for (int i = 0; i < _selectItems.Count; i++)
-        {
-            var data = GameManager.Instance.GetItemData(list[i].ToString());
-            _selectItems[i].Init(data,(() =>
-            {
-                GameManager.Instance.TestCode();
-            }));
-
+            Instantiate(selectItem, selectArea).SetActive(true);
         }
         
     }

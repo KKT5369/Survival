@@ -1,53 +1,48 @@
+using System;
 using System.Collections.Generic;
 using Cinemachine;
 using Data;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Random = UnityEngine.Random;
 
 public class GameManager : SingleTon<GameManager>
 {
+    public PlayerInfo playerInfo;
+    public AssetReference AcAvatar { get; set; }
     public CinemachineVirtualCamera mainCamera;
     public PlayerController playerController;
     public AssetReference MapReference { private get; set; }
-    private Dictionary<string, ItemData> _itemDatas = new();
+    
 
     public float gameTime;
     public float maxGameTime = 2 * 60;
 
-    public int health;
-    public int maxHealth = 100;
-    public int level;
-    public int kill;
-    public int exp;
-    public float[] nextExp = { 3, 5, 10, 100, 123, 140, 200, 250 };
+    // public int health;
+    // public int maxHealth = 100;
+    // public int level;
+    // public int kill;
+    // public int exp;
+    // public float[] nextExp = { 3, 5, 10, 20, 20, 20, 200, 250 };
     
     public async void Init()
     {
-        health = maxHealth;
         var mapRef = Instance.MapReference;
         await ResourceLoadManager.Instance.LoadAssetasync<GameObject>(mapRef, (result) =>
         {
             Instantiate(result);
         });
         
-        await ResourceLoadManager.Instance.LoadAssetasync<GameObject>("Player", (result) =>
+        await ResourceLoadManager.Instance.LoadAssetasync<PlayerInfo>("Player", (result) =>
         {
-            var go = result;
+            playerInfo = result;
+            var go = result.playerPre;
             var avatarGo = Instantiate(go);
             playerController = avatarGo.GetComponent<PlayerController>();
             mainCamera.LookAt = avatarGo.transform;
             mainCamera.Follow = avatarGo.transform;
         });
-        
-        var names = await ResourceLoadManager.Instance.GetLabelToAddressName("Weapon");
-        foreach (var v in names)
-        {
-            await ResourceLoadManager.Instance.LoadAssetasync<ItemData>(v, (result) =>
-            {
-                _itemDatas.Add(result.itemName,result);
-            });
-        }
-        
+        UIManager.Instance.OpenUI<UIMain>();
         TestCode();
     }
     
@@ -63,32 +58,16 @@ public class GameManager : SingleTon<GameManager>
     // ++ Test Code ++ // 
     public void TestCode()
     {
-        ItemData data;
-        if (_itemDatas.TryGetValue(WeaponType.Shovel.ToString(), out data))
-        {
-            playerController.SetWeapon<Shovel>(data);
-        }
-    }
-
-    public ItemData GetItemData(string itemName)
-    {
-        ItemData data;
-        if (_itemDatas.TryGetValue(itemName,out data))
-        {
-            return data;
-        }
-
-        return null;
     }
 
     public void GetExp()
     {
-        exp++;
+        playerInfo.exp++;
 
-        if (exp == nextExp[level])
+        if (playerInfo.exp == playerInfo.nextExp[playerInfo.level])
         {
-            level++;
-            exp = 0;
+            playerInfo.level++;
+            playerInfo.exp = 0;
             UIManager.Instance.OpenUI<UISelectItem>();
             Time.timeScale = 0;
         }

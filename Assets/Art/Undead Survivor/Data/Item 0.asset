@@ -15,7 +15,8 @@ MonoBehaviour:
   weaponType: 0
   itemId: 0
   itemName: Shovel
-  itemDesc: 
+  itemDesc: "\uC0BD\uC774 \uC8FC\uBCC0\uC744 \uB3CC\uBA70 \uC801\uC744 \uACF5\uACA9
+    \uD569\uB2C8\uB2E4."
   itemIcon: {fileID: -181907988, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   baseDamage: 10
   baseCount: 3

@@ -14,6 +14,7 @@ public class GameScene : MonoBehaviour
     {
         GameManager.Instance.mainCamera = mainCamera;
         PoolManager.Instance.Init();
+        WeaponManager.Instance.Init();
         GameManager.Instance.Init();
     }
     

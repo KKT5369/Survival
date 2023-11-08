@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerInfo _playerInfo;
     [SerializeField] private Animator anim;
     [SerializeField] private SpriteRenderer srAvatar;
     [SerializeField] private Transform weapon;
@@ -30,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     async void SetAnim()
     {
-        var avatarRef = PlayerManager.Instance.AcAvatar;
+        var avatarRef = GameManager.Instance.AcAvatar;
         await ResourceLoadManager.Instance.LoadAssetasync<AnimatorOverrideController>(avatarRef, (result) =>
         {
             anim.runtimeAnimatorController = result;

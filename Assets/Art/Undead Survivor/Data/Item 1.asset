@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aff7c1ec072f164a82e5d03d48e57fa, type: 3}
   m_Name: Item 1
   m_EditorClassIdentifier: 
-  itemType: 1
+  weaponType: 0
   itemId: 1
   itemName: GunBullet
-  itemDesc: 
+  itemDesc: "\uCD1D\uB4E4 \uBC1C\uC0AC \uD569\uB2C8\uB2E4."
   itemIcon: {fileID: -205726582, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   baseDamage: 3
   baseCount: 1
-  basePer: 0
-  baseSpeed: 0
+  basePer: 3
+  baseSpeed: 30
   damages:
   - 0.5
   - 1
@@ -28,6 +28,6 @@ MonoBehaviour:
   - 2
   - 3
   counts: 0000000001000000000000000100000002000000
-  pers: 
-  speeds: 
+  pers: 0000000000000000030000000000000003000000
+  speeds: 0300000003000000030000000300000003000000
   projectile: {fileID: 7040899002160447675, guid: 576957e6347570e47b35cd4748990d7e, type: 3}

@@ -69,7 +69,7 @@ public class EnemyController : MonoBehaviour
             coll.enabled = false;
             rigid.simulated = false;
             anim.SetBool("Dead",true);
-            GameManager.Instance.kill++;
+            GameManager.Instance.playerInfo.kill++;
             GameManager.Instance.GetExp();
         }
     }
