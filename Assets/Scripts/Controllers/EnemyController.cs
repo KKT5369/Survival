@@ -55,7 +55,7 @@ public class EnemyController : MonoBehaviour
         if (!col.CompareTag("Weapon") || !_isLive)
             return;
         
-        _health -= col.GetComponentInParent<WeaponBase>().Damage;
+        _health -= col.GetComponentInParent<WeaponBase>().data.baseDamage;
         StartCoroutine(nameof(KnockBack));
         
         if (_health > 0 )

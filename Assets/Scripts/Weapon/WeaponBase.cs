@@ -6,30 +6,32 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    public WeaponType WeaponType { get; protected set; }
-    public int Level { get; private set; }
-    public float Damage { get; protected set; }
-    public int Per { get; protected set; }
-    public int Count { get; protected set; }
-    public float Speed { get; protected set; }
-    
-    public GameObject asset;
+    public ItemData data;
 
-    public void LevelUp(ItemData data)
+    public void Init(ItemData data)
     {
         SetWeaponInfo(data);
         WeaponAction();
     }
     
-
     void SetWeaponInfo(ItemData data)
     {
-        WeaponType = data.weaponType;
-        Damage = data.baseDamage;
-        Count = data.baseCount;
-        Speed = data.baseSpeed;
-        asset = data.projectile;
-
+        this.data = data;
     }
+    
+    public void LevelUp()
+    {
+        var level = data.level++;
+
+        data.baseDamage += data.damages[level];
+        data.baseSpeed += data.speeds[level];
+        data.baseCount += data.counts[level];
+        data.basePer += data.pers[level];
+        
+        WeaponAction();
+    }
+    
+
+    
     protected abstract void WeaponAction();
 }

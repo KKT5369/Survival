@@ -15,7 +15,7 @@ public class WeaponManager : SingleTon<WeaponManager>
         {
             await ResourceLoadManager.Instance.LoadAssetasync<ItemData>(v, (result) =>
             {
-                _itemDatas.Add(result.itemName,result);
+                _itemDatas.Add(result.itemName,Instantiate(result));
             });
         }
         GameManager.Instance.TestCode();

@@ -13,7 +13,8 @@ public class ItemData : ScriptableObject
     public string itemDesc;
     public Sprite itemIcon;
 
-    [Header("# Level Data")]
+    [Header("# Level Data")] 
+    public int level;
     public float baseDamage;
     public int baseCount;
     public int basePer;

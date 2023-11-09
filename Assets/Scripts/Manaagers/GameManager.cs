@@ -27,7 +27,7 @@ public class GameManager : SingleTon<GameManager>
         
         await ResourceLoadManager.Instance.LoadAssetasync<PlayerInfo>("Player", (result) =>
         {
-            playerInfo = result;
+            playerInfo = Instantiate(result);
             var go = result.playerPre;
             var avatarGo = Instantiate(go);
             playerController = avatarGo.GetComponent<PlayerController>();
@@ -50,7 +50,7 @@ public class GameManager : SingleTon<GameManager>
     // ++ Test Code ++ // 
     public void TestCode()
     {
-        var data = WeaponManager.Instance.GetItemData(WeaponType.Shovel.ToString());
+        var data = WeaponManager.Instance.GetItemData(playerInfo.weaponType.ToString());
         playerController.SetWeapon(data);
     }
 
@@ -60,7 +60,6 @@ public class GameManager : SingleTon<GameManager>
         
         if (playerInfo.exp == playerInfo.nextExp[playerInfo.level])
         {
-            Debug.Log($"횟수 체크");
             playerInfo.level++;
             playerInfo.exp = 0;
             UIManager.Instance.OpenUI<UISelectItem>();

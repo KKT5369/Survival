@@ -25,7 +25,7 @@ public class Bullet : WeaponBase
         Vector3 playerPos = playerTf.position + playerTf.up * 1.5f;
         Quaternion playerRot = playerTf.rotation;
         
-        if (_timer > Count)
+        if (_timer > data.baseCount)
         {
             foreach (var go in _pool)
             {
@@ -40,7 +40,7 @@ public class Bullet : WeaponBase
                     return;
                 }
             }
-            var bulletItemgo = Instantiate(asset, playerPos, playerRot, transform);
+            var bulletItemgo = Instantiate(data.projectile, playerPos, playerRot, transform);
             var bulletItem = bulletItemgo.GetComponent<BulletItemBase>();
             bulletItem.Bullet = this;
             bulletItem.Fire(target.position);
