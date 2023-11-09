@@ -9,9 +9,8 @@
     public enum WeaponType
     {
         Shovel,
-        GunBullet,
-        FireBullet,
-        MagicBullet,
+        Gun,
+        FireBall,
     }
     
     public enum InfoType

@@ -14,17 +14,9 @@ public class GameManager : SingleTon<GameManager>
     public PlayerController playerController;
     public AssetReference MapReference { private get; set; }
     
-
     public float gameTime;
     public float maxGameTime = 2 * 60;
 
-    // public int health;
-    // public int maxHealth = 100;
-    // public int level;
-    // public int kill;
-    // public int exp;
-    // public float[] nextExp = { 3, 5, 10, 20, 20, 20, 200, 250 };
-    
     public async void Init()
     {
         var mapRef = Instance.MapReference;
@@ -43,7 +35,7 @@ public class GameManager : SingleTon<GameManager>
             mainCamera.Follow = avatarGo.transform;
         });
         UIManager.Instance.OpenUI<UIMain>();
-        TestCode();
+        //TestCode();
     }
     
     private void Update()
@@ -58,14 +50,17 @@ public class GameManager : SingleTon<GameManager>
     // ++ Test Code ++ // 
     public void TestCode()
     {
+        var data = WeaponManager.Instance.GetItemData(WeaponType.Shovel.ToString());
+        playerController.SetWeapon(data);
     }
 
     public void GetExp()
     {
         playerInfo.exp++;
-
+        
         if (playerInfo.exp == playerInfo.nextExp[playerInfo.level])
         {
+            Debug.Log($"횟수 체크");
             playerInfo.level++;
             playerInfo.exp = 0;
             UIManager.Instance.OpenUI<UISelectItem>();

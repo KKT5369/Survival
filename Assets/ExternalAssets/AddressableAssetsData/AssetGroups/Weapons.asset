@@ -18,12 +18,12 @@ MonoBehaviour:
   m_GUID: 35c4c268c9e6a0e42936cebb27d29d98
   m_SerializeEntries:
   - m_GUID: 23de7f9d85d4eee44b5d2c072ec0bff6
-    m_Address: FireBullet
+    m_Address: FireBall
     m_ReadOnly: 0
     m_SerializedLabels:
     - Weapon
   - m_GUID: cfd0e08a706c58c45984a9bb89a14f8c
-    m_Address: GunBullet
+    m_Address: Gun
     m_ReadOnly: 0
     m_SerializedLabels:
     - Weapon

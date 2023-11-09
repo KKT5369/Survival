@@ -12,20 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a800f61f8be12d4599315f959fd72d8, type: 3}
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
+  weaponType: 0
   health: 100
   maxHealth: 100
   level: 1
   kill: 0
   exp: 0
   nextExp:
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
-  - 20
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
+  - 10
   playerPre: {fileID: 1426591709281875279, guid: fa29707c00d74f94980fb448c4f66795, type: 3}

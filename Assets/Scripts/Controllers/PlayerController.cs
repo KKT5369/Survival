@@ -46,20 +46,20 @@ public class PlayerController : MonoBehaviour
         srAvatar.flipX = inputVec.x < 0;
     }
 
-    public void SetWeapon<T>(ItemData data) where T : WeaponBase
+    public void SetWeapon(ItemData data)
     {
         string strWeaponName = data.itemName;
         GameObject go;
         if (_weaponList.TryGetValue(strWeaponName,out go))
         {
-            go.GetComponent<T>().LevelUp(data);
+            go.GetComponent<WeaponBase>().LevelUp(data);
             return;
         }
         
         var weaponGo = new GameObject($"{strWeaponName}_Item");
-        var script = weaponGo.AddComponent<T>();
-        script.LevelUp(data);
         weaponGo.transform.parent = weapon;
+        var script = WeaponManager.Instance.SetWeaponComponent(weaponGo, data.weaponType);
+        script.LevelUp(data);
         _weaponList.Add(strWeaponName,weaponGo);
     }
 }

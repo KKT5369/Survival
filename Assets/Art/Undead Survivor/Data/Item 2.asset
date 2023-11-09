@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aff7c1ec072f164a82e5d03d48e57fa, type: 3}
   m_Name: Item 2
   m_EditorClassIdentifier: 
-  weaponType: 0
+  weaponType: 2
   itemId: 2
-  itemName: FireBullet
+  itemName: FireBall
   itemDesc: "\uD654\uC5FC\uAD6C\uB97C \uBC1C\uC0AC \uD569\uB2C8\uB2E4."
   itemIcon: {fileID: 927338625, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   baseDamage: 4.5
